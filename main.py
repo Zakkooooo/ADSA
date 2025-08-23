@@ -35,5 +35,3 @@ def main():
 
     # Print only the sum result
     print(sum_result)
-
-    main()
