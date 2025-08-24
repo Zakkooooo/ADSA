@@ -21,6 +21,26 @@ def school_add(I1: str, I2: str, B: int) -> str:
     result.reverse()
     return ''.join(result).lstrip("0") or "0"
 
+def subtraction(a: str, b: str, base: int) -> str:
+    # Assumes a >= b
+    n = max(len(a), len(b))
+    a = a.zfill(n)
+    b = b.zfill(n)
+
+    result = []
+    borrow = 0
+    for i in range(n - 1, -1, -1):
+        da = (ord(a[i]) - ord('0')) - borrow
+        db = (ord(b[i]) - ord('0'))
+        if da < db:
+            da += base
+            borrow = 1
+        else:
+            borrow = 0
+        result.append(str(da - db))
+
+    result.reverse()
+    return ''.join(result).lstrip("0") or "0"
 
 def multiply(num1: str, num2: str, base: int) -> str:
     n = len(num1)
